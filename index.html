@@ -9,10 +9,11 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #3533cd;
+            color: white;
         }
         header {
-            background-color: #333;
+            background-color: #2322a6;
             color: white;
             padding: 10px 20px;
             text-align: center;
@@ -29,6 +30,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background-color: white;
+            color: black;
         }
         table, th, td {
             border: 1px solid #ccc;
@@ -40,12 +43,25 @@
         th {
             background-color: #f2f2f2;
         }
-        .form-container {
+        .form-container, .login-container {
             margin-top: 20px;
+            background-color: #2322a6;
+            padding: 20px;
+            border-radius: 8px;
         }
-        .form-container input, .form-container button {
+        .form-container input, .form-container button, .login-container input, .login-container button {
             padding: 10px;
             margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-container button, .login-container button {
+            background-color: #f2f2f2;
+            color: #3533cd;
+            cursor: pointer;
+        }
+        .form-container button:hover, .login-container button:hover {
+            background-color: #ddd;
         }
         .search-container {
             margin-top: 20px;
@@ -53,6 +69,21 @@
         .search-container input {
             padding: 10px;
             margin-right: 10px;
+        }
+        footer {
+            background-color: #2322a6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+            .form-container, .login-container {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -62,6 +93,12 @@
         <h1>Endereçamento de Estoque</h1>
     </header>
     <main>
+        <section class="login-container">
+            <h3>Área de Login</h3>
+            <input type="text" id="login-username" placeholder="Nome de Usuário">
+            <button onclick="alert('Login realizado com sucesso!')">Entrar</button>
+        </section>
+
         <h2>Lista de Produtos</h2>
         <div class="search-container">
             <input type="text" id="search" placeholder="Pesquisar produtos..." oninput="searchProduct()">
@@ -91,6 +128,10 @@
             <button onclick="addProduct()">Adicionar</button>
         </div>
     </main>
+    <footer>
+        <p>&copy; 2025 Empresa Refrescante Sabor. Todos os direitos reservados.</p>
+        <p>Contato: contato@refrescantesabor.com | Telefone: (11) 99999-9999</p>
+    </footer>
 
     <script>
         function addProduct() {
@@ -136,6 +177,7 @@
     </script>
 </body>
 </html>
+
 
 
 
