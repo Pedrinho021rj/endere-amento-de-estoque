@@ -17,6 +17,11 @@
             padding: 10px 20px;
             text-align: center;
         }
+        header img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
         main {
             padding: 20px;
         }
@@ -49,14 +54,11 @@
             padding: 10px;
             margin-right: 10px;
         }
-        .qr-container {
-            margin-top: 30px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <header>
+        <img src="Design_sem_nome.jpg" alt="Logo">
         <h1>Endereçamento de Estoque</h1>
     </header>
     <main>
@@ -88,14 +90,8 @@
             <input type="text" id="product-location" placeholder="Localização">
             <button onclick="addProduct()">Adicionar</button>
         </div>
-
-        <div class="qr-container">
-            <h3>QR Code do Site</h3>
-            <canvas id="qrcode"></canvas>
-        </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script>
         function addProduct() {
             const id = document.getElementById('product-id').value;
@@ -137,17 +133,6 @@
                 }
             });
         }
-
-        // Gerar QR Code com URL do site
-        const siteUrl = window.location.href;
-        const canvas = document.getElementById('qrcode');
-        QRCode.toCanvas(canvas, siteUrl, { width: 200, margin: 2 }, function (error) {
-            if (error) {
-                console.error('Erro ao gerar QR Code:', error);
-            } else {
-                console.log('QR Code gerado com sucesso!');
-            }
-        });
     </script>
 </body>
 </html>
