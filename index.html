@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endereçamento de Estoque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container input, .form-container button {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .search-container {
+            margin-top: 20px;
+        }
+        .search-container input {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        .qr-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Endereçamento de Estoque</h1>
+    </header>
+    <main>
+        <h2>Lista de Produtos</h2>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Pesquisar produtos..." oninput="searchProduct()">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome do Produto</th>
+                    <th>Localização</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <tr>
+                    <td>275638</td>
+                    <td>Refrescante Sabor 250 ml</td>
+                    <td>Galpão: Rua 01, Coluna 3; Galpão T5; Armazém: 2C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-container">
+            <h3>Adicionar Produto</h3>
+            <input type="text" id="product-id" placeholder="ID do Produto">
+            <input type="text" id="product-name" placeholder="Nome do Produto">
+            <input type="text" id="product-location" placeholder="Localização">
+            <button onclick="addProduct()">Adicionar</button>
+        </div>
+
+        <div class="qr-container">
+            <h3>QR Code do Site</h3>
+            <canvas id="qrcode"></canvas>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        function addProduct() {
+            const id = document.getElementById('product-id').value;
+            const name = document.getElementById('product-name').value;
+            const location = document.getElementById('product-location').value;
+
+            if (id && name && location) {
+                const tableBody = document.getElementById('product-list');
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${id}</td>
+                    <td>${name}</td>
+                    <td>${location}</td>
+                `;
+
+                tableBody.appendChild(row);
+
+                document.getElementById('product-id').value = '';
+                document.getElementById('product-name').value = '';
+                document.getElementById('product-location').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos!');
+            }
+        }
+
+        function searchProduct() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('#product-list tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchValue));
+
+                if (matches) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Gerar QR Code com URL do site
+        const siteUrl = window.location.href;
+        const canvas = document.getElementById('qrcode');
+        QRCode.toCanvas(canvas, siteUrl, { width: 200, margin: 2 }, function (error) {
+            if (error) {
+                console.error('Erro ao gerar QR Code:', error);
+            } else {
+                console.log('QR Code gerado com sucesso!');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
