@@ -14,6 +14,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         header {
             background: rgba(0, 0, 0, 0.8);
@@ -97,6 +98,14 @@
             padding: 15px;
             margin-top: 20px;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        .logo-footer {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            max-width: 100px;
+            height: auto;
         }
         .search-container {
             width: 90%;
@@ -125,7 +134,7 @@
 </head>
 <body>
     <header>
-        <img src="Design_sem_nome.jpg" alt="Logo">
+        <img src="/mnt/data/Design%20sem%20nome.jpg" alt="Logo">
         <h1>Endereçamento de Estoque</h1>
     </header>
     <main>
@@ -167,6 +176,7 @@
     <footer>
         <p>&copy; 2025 Empresa Refrescante Sabor. Todos os direitos reservados.</p>
         <p>Contato: contato@refrescantesabor.com | Telefone: (11) 99999-9999</p>
+        <img class="logo-footer" src="/mnt/data/Design%20sem%20nome.jpg" alt="Logo no Rodapé">
     </footer>
 
     <script>
