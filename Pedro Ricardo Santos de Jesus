@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endereçamento de Estoque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #3533cd);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeOut 3s forwards;
+        }
+        .splash-screen img {
+            max-width: 300px;
+            height: auto;
+            animation: scaleUp 2s forwards;
+        }
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        header img {
+            max-width: 120px;
+            height: auto;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            color: black;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #3533cd;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        tr:hover {
+            background: #ddd;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background: #3533cd;
+            color: white;
+            cursor: pointer;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        footer img {
+            max-width: 80px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-screen">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPuvEU8vbtQn_L5NGMVc2AuDuZDaGJRRPRbN1JJXGKsPj--JLnEApD0IQPnYBl_wEfN4F0XabTQ3OXIvZDmzR-TpPqfhf3_bv3fIvF0GHnXLIVpJ8p9iPecOil_jTwDRl4Gu1rSJN95R1t-9u5MP2s=w500-h500-s-no?authuser=0" alt="Logo do Grupo">
+    </div>
+    <header>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPuvEU8vbtQn_L5NGMVc2AuDuZDaGJRRPRbN1JJXGKsPj--JLnEApD0IQPnYBl_wEfN4F0XabTQ3OXIvZDmzR-TpPqfhf3_bv3fIvF0GHnXLIVpJ8p9iPecOil_jTwDRl4Gu1rSJN95R1t-9u5MP2s=w500-h500-s-no?authuser=0" alt="Logo">
+        <h1>Endereçamento de Estoque</h1>
+    </header>
+    <main>
+        <section class="form-container">
+            <h3>Login</h3>
+            <input type="text" id="login-username" placeholder="Usuário">
+            <button onclick="redirectToEmployees()">Entrar</button>
+        </section>
+        <h2>Produtos Cadastrados</h2>
+        <input type="text" id="search" placeholder="Pesquisar produtos..." oninput="searchProduct()">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Localização</th>
+                    <th>Unidades</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <tr>
+                    <td>275638</td>
+                    <td>Refrescante Sabor 250 ml</td>
+                    <td>Galpão: Rua 01, Coluna 3; T5; Armazém 2C</td>
+                    <td>24</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2025 Empresa Refrescante Sabor</p>
+        <p>Contato: contato@refrescantesabor.com | Telefone: (11) 99999-9999</p>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPuvEU8vbtQn_L5NGMVc2AuDuZDaGJRRPRbN1JJXGKsPj--JLnEApD0IQPnYBl_wEfN4F0XabTQ3OXIvZDmzR-TpPqfhf3_bv3fIvF0GHnXLIVpJ8p9iPecOil_jTwDRl4Gu1rSJN95R1t-9u5MP2s=w500-h500-s-no?authuser=0" alt="Logo no Rodapé">
+    </footer>
+    <script>
+        function redirectToEmployees() {
+            window.location.href = "area-funcionarios.html";
+        }
+
+        function searchProduct() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('#product-list tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchValue));
+                row.style.display = matches ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
