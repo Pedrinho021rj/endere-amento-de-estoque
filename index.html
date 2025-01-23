@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endereçamento de Estoque</title>
-    <<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endereçamento de Estoque</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -21,19 +15,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-        }
-        header {
-            background: rgbstyle>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #000000, #3533cd);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            overflow-x: hidden; /* Evita rolagem horizontal */
         }
         header {
             background: rgba(0, 0, 0, 0.8);
@@ -53,6 +35,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-y: auto; /* Permite rolagem vertical */
         }
         table {
             width: 90%;
@@ -147,6 +130,12 @@
             }
             .search-container input {
                 font-size: 14px;
+            }
+            main {
+                padding: 10px; /* Reduz o padding para melhorar a rolagem */
+            }
+            footer {
+                padding: 10px;
             }
         }
     </style>
